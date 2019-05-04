@@ -107,7 +107,8 @@ def nlp(req):  # NLP work
     bw = req.POST.get("bw")
     fid = feedbacks.objects.latest('id').id
     counter = 0
-    feedback = feedbacks.objects.all
+    feedback = feedbacks.objects.order_by("-id")[1:]
+    feedback.reverse()
     for feedbac in feedback:
         if(classify(text) > 70):  # If its greater than 70 it means it's garbadge text
             return
