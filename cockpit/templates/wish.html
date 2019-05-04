@@ -73,8 +73,8 @@
   <!--Top Nav Bar-->
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="height: 100px">
-      <a class="navbar-brand" style="color: white; font-size: 200%">DDSE Developer Cockpit</a>
-      <a class="btn btn-danger offset-8" href="https://dddse.herokuapp.com/logout/">Logout</a>
+      <a class="navbar-brand" style="color: white; font-size: 200%">DDDSE Developer Cockpit</a>
+      <a class="btn btn-danger offset-8" href="http://dddse.cf/logout/">Logout</a>
     </nav>
   </div>
   <br />
@@ -621,7 +621,8 @@
           feedbacks = JSON.parse(this.response); // Parse the response in to Regular JSON array
           var table = document.getElementById("feedbackTable");
           feedbacks.forEach(function (object) {  // For each object in JSON array add a row and fill the data
-            var timesplit = object.DateTime.slice(0, 15);
+            var timesplit = object.DateTime.slice(0, 16);
+            timesplit = timesplit.replace("T", " ");
             var newText = object.text.slice(0, 35)+".....";
             var tr = document.createElement("tr");
             tr.innerHTML =
@@ -874,7 +875,7 @@
     function addNewFeedback(cat, txt, bugWish) { // This is Just for testing Purpose Feel free to remove this function
       let fd = new FormData();
       fd.append("category", cat);
-      fd.append("text", "Optional('"+txt+")");
+      fd.append("text", "Optional('"+txt+"')");
       fd.append("bw", bugWish);
       let request = new XMLHttpRequest();
       request.open("POST", "postfeedback", true);
@@ -919,9 +920,20 @@
             alert("Please Choose One at a time");
           } else {
             console.log(selectedRows.length);
+            var title = document.getElementById("title").value; // Brings teh data from the modal Form input
+            var category = document.getElementById("selectCategory").value;
+            var description = document.getElementById("description").value;
+            var date = document.getElementById("date").value;
+            var file1 = document.querySelector('#uploadFile').files[0]; 
+            if (title == null || category == null || description==null || date==null){
+              alert("Please fill all fields.");
+              return
+            }
+            else{
             setTimeout(postVote(val), 2000); // Post Vote function call
             setTimeout(getData(), 500); 
           }
+        }
         } else if (name == "createRedmineIssue") {
             postIssue(val);
         } else if (name == "createRedmineIssueVote") {
