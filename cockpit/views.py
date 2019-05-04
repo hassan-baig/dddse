@@ -121,7 +121,7 @@ def nlp(req):  # NLP work
             #If similarity score is greater than 0.5 It means they are same. You can change it
             if(result['similarity_score'] >= 0.65):
                 counter = counter+1
-                postToRelated(fid, feedbac.fid)  # Post Related in related table
+                postToRelated(fid, feedbac.id)  # Post Related in related table
                 return
 # If we are here it means feedback is neither garbadge nor it's similar so we add it in analyzedfeedback table
     m = analyzedFeedbacks(
