@@ -1,0 +1,18 @@
+login to your github account
+go to this URL
+https://github.com/hassan-baig/dddse
+now update any file here manualy online.
+and then go to terminal
+
+ssh root@134.209.107.225
+password Demo123456
+su hassan
+cd ~/dddse
+source dddseenv/bin/activate
+git pull origin master
+su root
+password Demo123456
+sudo systemctl restart gunicorn
+
+
+
