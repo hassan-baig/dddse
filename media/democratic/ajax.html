@@ -1,0 +1,37 @@
+<script>
+  // GET or PUT request asa o jati ha
+  var analyzedfeedback = analyzedfeedbacks[j]; // Yah mra project ka tha isay chor day. Bs smjh tera pas ak array ka data ha jo tu na backend pr bhajna ha
+  let fd = new FormData(); // Yah wo variable ha jo tu backend pr bhajay ga
+  fd.append("fid", analyzedfeedback.fid); // Yah dakh asy data dalta ja is variable ma append kr k phir bhaji picha
+  fd.append("category", analyzedfeedback.category);
+  fd.append("text", analyzedfeedback.text);
+  fd.append("related", analyzedfeedback.related);
+  let request = new XMLHttpRequest(); // Yah request ka variable hay asy javasript ma request bhajta ha
+  request.open("POST", "api/wish/", true); // Sb sa phla parameter hay k request type kya ha jsy POST GET PUT DELETE etc, Second Parameter ma URL hay backend ki jahan tu na data bhajna hay. Yahan asy jasy URL.COM/API/FILENAME
+  request.onload = function(data) {
+    // Yah ASYNC function hay iska kaam yah ha k jb request complete o jay or koi response server ready kr day tw yah function call o. Is function ma response ata ha server ka
+    console.log(this.responseText); // responseText response wagarh ya different response types hain
+    deleteAnalyzedFeedback(id);
+  };
+  request.onerror = function() {
+    // Iska maqsad yah ha k ASYNC hay aagar backend sa error a jay koi jsy k 404 etc tw wo yahan a jay ga error
+    console.log("error");
+  };
+  request.send(fd); // Yah step hay jahan actual ma request send hoti ha. Yah line oper wla dono functions sa phla execute o gi q k wo dono ASYNC hay
+  //request ka agay dot lga kr iska sara functions parh lay request.
+</script>
+
+<script>
+  // PUT GET DELETE yah baqi sb requests asy o gi
+  let request = new XMLHttpRequest(); // Yah request ka variable hay asy javasript ma request bhajta ha
+  request.open("DELETE", "api/wish/1/", true); // Sb sa phla parameter hay k request type kya ha jsy POST GET PUT DELETE etc, Second Parameter ma URL hay backend ki jahan tu na data bhajna hay. Yahan asy jasy URL.COM/API/FILENAME
+  request.onload = function(data) {
+    // Yah ASYNC function hay iska kaam yah ha k jb request complete o jay or koi response server ready kr day tw yah function call o. Is function ma response ata ha server ka
+    console.log(this.responseText); // responseText response wagarh ya different response types hain
+  };
+  request.onerror = function() {
+    // Iska maqsad yah ha k ASYNC hay aagar backend sa error a jay koi jsy k 404 etc tw wo yahan a jay ga error
+    console.log("error");
+  };
+  request.send(); // Yah step hay jahan actual ma request send hoti ha. Yah line oper wla dono functions sa phla execute o gi q k wo dono ASYNC hay
+</script>
