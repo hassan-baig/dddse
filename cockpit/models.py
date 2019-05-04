@@ -13,7 +13,7 @@ class feedbacks(models.Model):
 
 
 class analyzedFeedbacks(models.Model):
-    fid = models.IntegerField(primary_key=True)
+    fid = models.IntegerField(unique=True)
     DateTime = models.DateTimeField()
     category = models.CharField(max_length=50)
     text = models.TextField()
@@ -23,7 +23,7 @@ class analyzedFeedbacks(models.Model):
 
 
 class wish(models.Model):
-    fid = models.IntegerField(primary_key=True)
+    fid = models.IntegerField(unique=True)
     text = models.TextField()
     category = models.CharField(max_length=50)
     related = models.IntegerField(blank=True, null=True)
@@ -31,7 +31,7 @@ class wish(models.Model):
 
 
 class democratic(models.Model):
-    fid = models.IntegerField(primary_key=True)
+    fid = models.IntegerField(unique=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     category = models.CharField(max_length=50, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
