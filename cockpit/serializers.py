@@ -52,4 +52,4 @@ class games(serializers.ModelSerializer):
 class votesSerialization(serializers.ModelSerializer):
     class Meta():
         model = votes
-        fields = ('username','fid', 'vote')
+        fields = ('id','username','fid', 'vote')
