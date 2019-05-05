@@ -74,3 +74,9 @@ class related(models.Model):
     followed = models.IntegerField(blank=True, null=True)
     follower = models.IntegerField(blank=True, null=True)
     objects = models.Manager()
+
+    
+class votes(models.Model):
+    username = models.CharField(max_length=255)
+    fid = models.IntegerField()
+    vote = models.IntegerField()
