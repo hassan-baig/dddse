@@ -12,6 +12,7 @@ router.register('democratic', views.demoView)
 router.register('account', views.accountView)
 router.register('related', views.relatedFeedbacksView)
 router.register('game', views.gameView)
+router.register('votes', views.votesView)
 
 
 urlpatterns = [
