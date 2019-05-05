@@ -805,33 +805,15 @@
     }
 
 
-    function updatevotes(){
-      demo.forEach(function (obj){
-        var lvotes = calculateVotes(obj.fid);
-        let fd = new FormData();
-        fd.append("pvotes", lvotes[0]);
-        fd.append("nvotes", lvotes[1]);
-        var token = '{{csrf_token}}';
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            console.log("success");
-          }
-        };
-        xhttp.open("PATCH", "api/votes/" + obj.id + "", true);
-        xhttp.setRequestHeader("X-CSRFToken", token);
-        xhttp.send();
-      });
-    }
-
-    function calculateVotes(id){
+function updatevotes(){
+      demo.forEach(function (obj){ 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           var vot = JSON.parse(this.response);
           var lvotes = [0,0];
           vot.forEach(function (object) {
-              if(object.fid == id){
+              if(object.fid == obj.fid){
                 if(object.vote == 1){
                   lvotes[0]++;
                 }
@@ -840,12 +822,26 @@
                 }
               }
           });
-          return lvotes
+          let fd = new FormData();
+          fd.append("pvotes", lvotes[0]);
+          fd.append("nvotes", lvotes[1]);
+          var token = '{{csrf_token}}';
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              console.log("success");
+            }
+          };
+          xhttp.open("PATCH", "api/votes/" + obj.id + "", true);
+          xhttp.setRequestHeader("X-CSRFToken", token);
+          xhttp.send();
         }
       };
       xhttp.open("GET", "api/votes/", true);
       xhttp.send();
-    }   
+      });
+    }
+ 
     
     function deleteVote(id) { // This deletes any selected Vote from Demo table
       var j = 0;
