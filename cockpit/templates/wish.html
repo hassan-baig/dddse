@@ -452,7 +452,7 @@
       $("#analyzedfeedbackTable tr").unbind('click').click(function () {
         $(this).addClass('selected').siblings().removeClass('selected');
         var value = $(this).find('td:first').html();
-        value = value.slice(7);
+        value = value.slice(6);
         // We are using this loop to get the Index of array because All feedbacks are not analyzed feedbacks so we do this to get where in array our ID matches
         var j = 0;
         for (i = 0; i < analyzedfeedbacks.length; i++) {
@@ -511,7 +511,7 @@
       $("#wishTable tr").unbind('click').click(function () {
         $(this).addClass('selected').siblings().removeClass('selected');
         var value = $(this).find('td:first').html();
-        value = value.slice(7);
+        value = value.slice(6);
         var j = 0;
         for (i = 0; i < wishes.length; i++) {
           if (value == wishes[i].fid) {
@@ -567,7 +567,7 @@
       $("#demoTable tr").unbind('click').click(function () {
         $(this).addClass('selected').siblings().removeClass('selected');
         var value = $(this).find('td:first').html();
-        value = value.slice(7);
+        value = value.slice(6);
         console.log(value);
         var j = 0;
         for (i = 0; i < demo.length; i++) {
