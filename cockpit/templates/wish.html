@@ -823,6 +823,7 @@ function updatevotes(){
               }
           });
           let fd = new FormData();
+          console.log(lvotes);
           fd.append("pvotes", lvotes[0]);
           fd.append("nvotes", lvotes[1]);
           var token = '{{csrf_token}}';
@@ -834,7 +835,7 @@ function updatevotes(){
           };
           xhttp.open("PATCH", "api/democratic/" + obj.id + "", true);
           xhttp.setRequestHeader("X-CSRFToken", token);
-          xhttp.send();
+          xhttp.send(fd);
         }
       };
       xhttp.open("GET", "api/votes/", true);
