@@ -832,7 +832,7 @@ function updatevotes(){
               console.log("success");
             }
           };
-          xhttp.open("PATCH", "api/votes/" + obj.id + "", true);
+          xhttp.open("PATCH", "api/democratic/" + obj.id + "", true);
           xhttp.setRequestHeader("X-CSRFToken", token);
           xhttp.send();
         }
