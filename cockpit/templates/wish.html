@@ -836,7 +836,7 @@
         }
       } 
       console.log(analyzedfeedbacks[j]);
-      var token = '{{csrf_token}}';
+      //var token = '{{csrf_token}}';
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -845,7 +845,7 @@
         }
       };
       xhttp.open("DELETE", "api/analyzedfeedback/" + j + "", true);
-      xhttp.setRequestHeader("X-CSRFToken", token);
+      //xhttp.setRequestHeader("X-CSRFToken", token);
       xhttp.send();
     }
 
@@ -860,6 +860,7 @@
         }
       } 
       console.log(wishes[j]);
+      console.log(j);
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
