@@ -814,6 +814,7 @@
         }
       } 
       console.log(demo[j]);
+      var k = demo[j].id;
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -821,7 +822,7 @@
           //window.location.reload(true);
         }
       };
-      xhttp.open("DELETE", "api/democratic/" + j + "", true);
+      xhttp.open("DELETE", "api/democratic/" + k + "", true);
       xhttp.send();
     } 
 
@@ -836,6 +837,7 @@
         }
       } 
       console.log(analyzedfeedbacks[j]);
+      var k = analyzedfeedbacks[j].id
       //var token = '{{csrf_token}}';
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -844,7 +846,7 @@
           //window.location.reload(true);
         }
       };
-      xhttp.open("DELETE", "api/analyzedfeedback/" + j + "", true);
+      xhttp.open("DELETE", "api/analyzedfeedback/" + k + "", true);
       //xhttp.setRequestHeader("X-CSRFToken", token);
       xhttp.send();
     }
@@ -861,6 +863,7 @@
       } 
       console.log(wishes[j]);
       console.log(j);
+      var k = wishes[j].id;
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -868,7 +871,7 @@
           //window.location.reload(true);
         }
       };
-      xhttp.open("DELETE", "api/wish/" + j + "", true);
+      xhttp.open("DELETE", "api/wish/" + k + "", true);
       xhttp.send();
     }
 
