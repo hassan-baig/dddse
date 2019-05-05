@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, HttpResponse
 from rest_framework.decorators import action
-from . models import feedbacks, analyzedFeedbacks, wish, democratic, account, related, game
+from . models import feedbacks, analyzedFeedbacks, wish, democratic, account, related, game, votes
 import json
 from django.http import JsonResponse
 from django.core import serializers
@@ -15,7 +15,7 @@ import re
 import math
 import datetime
 import paralleldots
-from. serializers import feedbacksSerializers, demoSerializers, wishSerializers, analyzedfeedbacksSerializers, accountSerializers, relatedFeedbacks, games
+from. serializers import feedbacksSerializers, demoSerializers, wishSerializers, analyzedfeedbacksSerializers, accountSerializers, relatedFeedbacks, games, votesSerialization
 
 
 # Create your views here.
@@ -81,6 +81,13 @@ class gameView(viewsets.ModelViewSet):
         CsrfExemptSessionAuthentication, BasicAuthentication)
     queryset = game.objects.all()
     serializer_class = games
+    
+    
+class votesView(viewsets.ModelViewSet):
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+    queryset = votes.objects.all()
+    serializer_class = votesSerialization
 
 
 @csrf_exempt
