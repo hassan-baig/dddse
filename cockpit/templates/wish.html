@@ -817,7 +817,7 @@
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           console.log("success");
-         // setTimeout(window.location.reload(true), 1000);
+          window.location.reload(true);
         }
       };
       xhttp.open("DELETE", "api/democratic/" + j + "", true);
@@ -839,7 +839,7 @@
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           console.log("success");
-          //setTimeout(window.location.reload(true), 1000);
+          window.location.reload(true);
         }
       };
       xhttp.open("DELETE", "api/analyzedfeedback/" + j + "", true);
@@ -861,7 +861,7 @@
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           console.log("success");
-          //setTimeout(window.location.reload(true), 1000);
+          window.location.reload(true);
         }
       };
       xhttp.open("DELETE", "api/wish/" + j + "", true);
@@ -927,15 +927,12 @@
         val = val.slice(6); // Removes DDDSE and only ID left
         if (name == "deleteAnalyzedFeedback") { // This checks if we should call delete analyzed feedback function
           deleteAnalyzedFeedback(val);
-          window.location.reload(true);
           setTimeout(getData, 500); // After Delete Again populate all tables so we get updated data without page refresh
         } else if (name == "deleteVote") {
           deleteVote(val);
-          window.location.reload(true);
           setTimeout(getData, 500);
         } else if (name == "deleteWish") {
           deleteWish(val);
-          window.location.reload(true);
           setTimeout(getData, 500);
         } else if (name == "moveToWish") {
           moveToWish(val);
