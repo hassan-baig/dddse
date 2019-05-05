@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from . models import feedbacks, analyzedFeedbacks, wish, account, democratic, related, game
+from . models import feedbacks, analyzedFeedbacks, wish, account, democratic, related, game, votes
 # This add serializers for Django Rest Framework API generation
 
 
@@ -47,3 +47,9 @@ class games(serializers.ModelSerializer):
     class Meta():
         model = game
         fields = ('imagePath', 'a', 'b', 'c', 'd', 'right')
+        
+        
+class votesSerialization(serializer.ModelSerializer):
+    class Meta():
+        model = votes
+        fields = ('username','fid', 'vote')
