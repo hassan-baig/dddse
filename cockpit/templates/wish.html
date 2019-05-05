@@ -819,7 +819,7 @@
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           console.log("success");
-          //window.location.reload(true);
+          setTimeout(window.location.reload(true), 500);
         }
       };
       xhttp.open("DELETE", "api/democratic/" + k + "", true);
@@ -843,7 +843,7 @@
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           console.log("success");
-          //window.location.reload(true);
+          setTimeout(window.location.reload(true), 500);
         }
       };
       xhttp.open("DELETE", "api/analyzedfeedback/" + k + "", true);
@@ -868,7 +868,7 @@
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           console.log("success");
-          //window.location.reload(true);
+          setTimeout(window.location.reload(true), 500);
         }
       };
       xhttp.open("DELETE", "api/wish/" + k + "", true);
