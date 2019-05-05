@@ -49,7 +49,7 @@ class games(serializers.ModelSerializer):
         fields = ('imagePath', 'a', 'b', 'c', 'd', 'right')
         
         
-class votesSerialization(serializer.ModelSerializer):
+class votesSerialization(serializers.ModelSerializer):
     class Meta():
         model = votes
         fields = ('username','fid', 'vote')
