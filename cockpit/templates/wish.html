@@ -804,6 +804,14 @@
 
 
     function deleteVote(id) { // This deletes any selected Vote from Demo table
+      var j = 0;
+      for (i = 0; i < analyzedfeedbacks.length; i++) { // Get the Index of feedback in analyzed Feedback array
+        if (id == analyzedfeedbacks[i].fid) {
+          j = i;
+          break;
+          break;
+        }
+      } 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -811,12 +819,20 @@
           window.location.reload(true);
         }
       };
-      xhttp.open("DELETE", "api/democratic/" + id + "", true);
+      xhttp.open("DELETE", "api/democratic/" + j + "", true);
       xhttp.send();
     } 
 
 
     function deleteAnalyzedFeedback(id) { // This deletes selected analyzed feedback from analyzed feedback table
+      var j = 0;
+      for (i = 0; i < analyzedfeedbacks.length; i++) { // Get the Index of feedback in analyzed Feedback array
+        if (id == analyzedfeedbacks[i].fid) {
+          j = i;
+          break;
+          break;
+        }
+      } 
       var token = '{{csrf_token}}';
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
@@ -825,13 +841,21 @@
           window.location.reload(true);
         }
       };
-      xhttp.open("DELETE", "api/analyzedfeedback/" + id + "", true);
+      xhttp.open("DELETE", "api/analyzedfeedback/" + j + "", true);
       xhttp.setRequestHeader("X-CSRFToken", token);
       xhttp.send();
     }
 
 
     function deleteWish(id) { // Delete any selected Wish from wish table 
+      var j = 0;
+      for (i = 0; i < analyzedfeedbacks.length; i++) { // Get the Index of feedback in analyzed Feedback array
+        if (id == analyzedfeedbacks[i].fid) {
+          j = i;
+          break;
+          break;
+        }
+      } 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -839,7 +863,7 @@
           window.location.reload(true);
         }
       };
-      xhttp.open("DELETE", "api/wish/" + id + "", true);
+      xhttp.open("DELETE", "api/wish/" + j + "", true);
       xhttp.send();
     }
 
@@ -918,14 +942,16 @@
         } else if (name == "postVote") {
           if (selectedRows.length > 1) { // This will check if the user has selected More than one rows and trying to POST Vote then it shouldn't work
             alert("Please Choose One at a time");
+            return
           } else {
             console.log(selectedRows.length);
+            console.log("inside");
             var title = document.getElementById("title").value; // Brings teh data from the modal Form input
             var category = document.getElementById("selectCategory").value;
             var description = document.getElementById("description").value;
             var date = document.getElementById("date").value;
             var file1 = document.querySelector('#uploadFile').files[0]; 
-            if (title == null || category == null || description==null || date==null){
+            if (title == null || category == null || description==null || date==null || title == "" || category == "" || description==""){
               alert("Please fill all fields.");
               return
             }
