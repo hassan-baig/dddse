@@ -12,21 +12,21 @@ class feedbacksSerializers(serializers.ModelSerializer):
 class analyzedfeedbacksSerializers(serializers.ModelSerializer):
     class Meta():
         model = analyzedFeedbacks
-        fields = ('DateTime', 'fid', 'category',
+        fields = ('DateTime', 'id', 'fid', 'category',
                   'text', 'bw', 'related')
 
 
 class wishSerializers(serializers.ModelSerializer):
     class Meta():
         model = wish
-        fields = ('fid', 'category',
+        fields = ('fid', 'id', 'category',
                   'text', 'related')
 
 
 class demoSerializers(serializers.ModelSerializer):
     class Meta():
         model = democratic
-        fields = ('title', 'category', 'description',
+        fields = ('title', 'id', 'category', 'description',
                   'dueDate', 'filePath', 'fid', 'pvotes', 'nvotes')
 
 
