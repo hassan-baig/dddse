@@ -382,6 +382,9 @@
           }
         }
         var obj = feedbacks[j]; // Obj will now contain the object from feedbacks JSON array
+        
+        var timesplit = obj.DateTime.slice(0, 16);
+        timesplit = timesplit.replace("T", " ");
         var h3 = document.createElement("h4"); //These all are h4 element creations 
         var h4 = document.createElement("h4");
         var h5 = document.createElement("h4");
@@ -389,7 +392,7 @@
         var bw = document.createElement("h4");
         //Here we are adding HTML in created elements dynamically 
         bw.innerHTML = "<strong> Bug/Wish:</strong> " + obj.bw; // This is concatination 
-        h4.innerHTML = "<strong>Date:</strong> " + obj.DateTime;
+        h4.innerHTML = "<strong>Date:</strong> " + timesplit;
         h3.innerHTML =
           "<strong>" + "id:</strong> dddse_" +
           obj.id +
@@ -427,13 +430,16 @@
           }
         }
         var obj = feedbacks[j]
+        
+        var timesplit = obj.DateTime.slice(0, 16);
+        timesplit = timesplit.replace("T", " ");
         var h3 = document.createElement("h4");
         var h4 = document.createElement("h4");
         var h5 = document.createElement("h4");
         var para = document.createElement("h4");
         var bw = document.createElement("h4");
         bw.innerHTML = "<strong> Bug/Wish:</strong> " + obj.bw;
-        h4.innerHTML = "<strong>Date:</strong> " + obj.DateTime;
+        h4.innerHTML = "<strong>Date:</strong> " + timesplit;
         h3.innerHTML =
           "<strong>" + "id:</strong> dddse_" +
           obj.id +
@@ -493,9 +499,12 @@
             relatedFeed.innerHTML += // This Loop prints all the related Feedbacks on Modal
               "<a onclick='openFeedback1("+relations[i]+")' data-toggle='modal' data-target='#openFeedbackForm1'>dddse_" + relations[i] + "</a> <br />"
           }
+          
+          var timesplit = obj.DateTime.slice(0, 16);
+          timesplit = timesplit.replace("T", " ");
           bw.innerHTML = "<strong> Bug/Wish:</strong> " + obj.bw;
           status.innerHTML = "<strong>#:</strong> " + obj.related;
-          h4.innerHTML = "<strong>Date:</strong> " + obj.DateTime;
+          h4.innerHTML = "<strong>Date:</strong> " + timesplit;
           h3.innerHTML =
             "<strong>" + "id:</strong> dddse_" +
             obj.fid +
