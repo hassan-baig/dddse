@@ -101,7 +101,7 @@
                 <tr>
                   <th scope="col-2" onClick="sortTable('wishTable');">id</th>
                   <th scope="col-5">Text</th>
-                  <th scope="col-2">category</th>
+                  <th scope="col-2" onClick="sortTable1(2,'wishTable');">category</th>
                   <th scope="col-1">#</th>
                   <th scope="col-2">Open</th>
                   <th scope="col-1">select</th>
@@ -137,7 +137,7 @@
                 <tr>
                   <th scope="col-3" onClick="sortTable('demoTable');">id</th>
                   <th scope="col-2">Due Date</th>
-                  <th scope="col-2">category</th>
+                  <th scope="col-2" onClick="sortTable1(2,'demoTable');">category</th>
                   <th scope="col-2">status</th>
                   <th scope="col-2">open</th>
                   <th scope="col-1">select</th>
@@ -171,7 +171,7 @@
                 <tr>
                   <th scope="col-2" onClick="sortTable('feedbackTable');">ID</th>
                   <th scope="col-2">Datetime</th>
-                  <th scope="col-2">Category</th>
+                  <th scope="col-2" onClick="sortTable1(2,'feedbackTable');">Category</th>
                   <th scope="col-4">Text</th>
                   <th scope="col-2">Open</th>
                 </tr>
@@ -195,7 +195,7 @@
                 <tr>
                   <th scope="col-2" onClick="sortTable('analyzedfeedbackTable');">ID</th>
                   <th scope="col-4">Text</th>
-                  <th scope="col-2" onClick = "sortTable1('analyzedfeedbackTable');">B/W</th>
+                  <th scope="col-2" onClick = "sortTable1(2,'analyzedfeedbackTable');">B/W</th>
                   <th scope="col-1">#</th>
                   <th scope="col-2">Open</th>
                   <th scope="col-1">Select</th>
@@ -1113,6 +1113,7 @@ function updatevotes(){
   var countClick = 0;
   function sortTable(tablename) {
   var table, rows, switching, i, x, y, shouldSwitch;
+  var dir = "asc"; 
   table = document.getElementById(tablename);
   switching = true;
   /*Make a loop that will continue until
@@ -1137,10 +1138,19 @@ function updatevotes(){
       yy = yy.slice(6);
       xx = parseInt(xx);
       yy = parseInt(yy);
+      if (dir == "asc") {
       if (xx > yy) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;
+      }
+      }else if (dir == "desc") {
+      if (xx < yy) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+      }
       }
     }
     if (shouldSwitch) {
@@ -1148,7 +1158,15 @@ function updatevotes(){
       and mark that a switch has been done:*/
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
+    }else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
     }
+
   }
 }
 
@@ -1168,6 +1186,61 @@ function updatevotes(){
           document.getElementById("execute").click();
       }
   }
+    
+    function sortTable1(n,tabelname) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById(tablename);
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
  
   </script>
 </body>
