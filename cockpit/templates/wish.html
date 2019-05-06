@@ -1107,7 +1107,9 @@ function updatevotes(){
       xx = xx.slice(6);
       var yy = y.innerHTML;
       yy = yy.slice(6);
-      if (Number(xx) > Number(yy) {
+      xx = parseInt(xx);
+      yy = parseInt(yy);
+      if (xx > yy) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;
