@@ -809,13 +809,15 @@
       var category = document.getElementById("selectCategory").value;
       var description = document.getElementById("description").value;
       var date = document.getElementById("date").value;
-      var file1 = document.querySelector('#uploadFile').files[0]; // It get first filr from the Files array
       let fd = new FormData(); // Add every thing in a formData to send
       fd.append("title", title);
       fd.append("category", category);
       fd.append("description", description);
       fd.append("dueDate", date);
+      if(document.querySelector('#uploadFile').files[0] != null){
+      var file1 = document.querySelector('#uploadFile').files[0]; // It get first filr from the Files array
       fd.append("filePath", file1);
+      }
       fd.append("fid", id);
       let request = new XMLHttpRequest();
       request.open("POST", "api/democratic/", true);
