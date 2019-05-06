@@ -37,7 +37,7 @@ class democratic(models.Model):
     description = models.TextField(blank=True, null=True)
     dueDate = models.DateField()
     filePath = models.FileField(
-        upload_to='democratic/', , default='a')
+        upload_to='democratic/' , default='a')
     pvotes = models.IntegerField(blank=True, default=0)
     nvotes = models.IntegerField(blank=True, default=0)
     objects = models.Manager()
