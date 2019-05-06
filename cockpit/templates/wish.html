@@ -193,7 +193,7 @@
                 <tr>
                   <th scope="col-2" onClick="sortTable('analyzedfeedbackTable');">ID</th>
                   <th scope="col-4">Text</th>
-                  <th scope="col-2">B/W</th>
+                  <th scope="col-2" onClick = "sortTable1('analyzedfeedbackTable');">B/W</th>
                   <th scope="col-1">#</th>
                   <th scope="col-2">Open</th>
                   <th scope="col-1">Select</th>
@@ -1110,6 +1110,44 @@ function updatevotes(){
       xx = parseInt(xx);
       yy = parseInt(yy);
       if (xx > yy) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+    
+    function sortTable1(tablename) {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById(tablename);
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[2];
+      y = rows[i + 1].getElementsByTagName("TD")[2];
+      //check if the two rows should switch place:
+      var xx = x.innerHTML;
+      var xxx = xx.toLowerCase();
+      if (xxx == "bug") {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;
