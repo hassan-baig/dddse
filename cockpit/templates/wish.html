@@ -409,10 +409,18 @@
         $(this).addClass('selected').siblings().removeClass('selected');
         var value = $(this).find('td:first').html(); // This is JQuery bringing in the ID of the Feedback that was clicked
         value = value.slice(6); // As we know we put extra dddse_ before ID So we use JS Slice method to strip that dddse_ and get the ID 
-        value = value - 1; // Again this is Feedback ID we need Array index so -1
+        //value = value - 1; // Again this is Feedback ID we need Array index so -1
         console.log(value);
         console.log(feedbacks);
-        var obj = feedbacks[value]
+        var j = 0;
+        for (i = 0; i < analyzedfeedbacks.length; i++) {
+          if (value == analyzedfeedbacks[i].id) {
+            j = i;
+            break;
+            break;
+          }
+        }
+        var obj = feedbacks[j]
         var h3 = document.createElement("h4");
         var h4 = document.createElement("h4");
         var h5 = document.createElement("h4");
