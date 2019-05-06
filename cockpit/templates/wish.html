@@ -1103,8 +1103,11 @@ function updatevotes(){
       x = rows[i].getElementsByTagName("TD")[0];
       y = rows[i + 1].getElementsByTagName("TD")[0];
       //check if the two rows should switch place:
-      
-      if (Number((x.innerHTML).slice(6)) > Number((y.innerHTML).slice(6)) {
+      var xx = x.innerHTML;
+      xx = xx.slice(6);
+      var yy = y.innerHTML;
+      yy = yy.slice(6);
+      if (Number(xx) > Number(yy) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;
