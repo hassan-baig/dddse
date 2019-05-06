@@ -429,8 +429,10 @@
             break;
           }
         }
+        console.log(j);
+        console.log(value);
+        console.log(feedbacks);
         var obj = feedbacks[j]
-        
         var timesplit = obj.DateTime.slice(0, 16);
         timesplit = timesplit.replace("T", " ");
         var h3 = document.createElement("h4");
