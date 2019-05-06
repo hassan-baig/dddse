@@ -374,8 +374,8 @@
       if(idd!=0){ // If the IDD is not Zero This means that this function is called from another modal not from table
         var value = idd; // IDD contains the feedback ID but we need Array index so we do -1 as we know array index starts from 0
         var j = 0;
-        for (i = 0; i < analyzedfeedbacks.length; i++) {
-          if (value == analyzedfeedbacks[i].id) {
+        for (i = 0; i < feedbacks.length; i++) {
+          if (value == feedbacks[i].id) {
             j = i;
             break;
             break;
@@ -422,16 +422,13 @@
         value = value.slice(6); // As we know we put extra dddse_ before ID So we use JS Slice method to strip that dddse_ and get the ID 
         //value = value - 1; // Again this is Feedback ID we need Array index so -1
         var j = 0;
-        for (i = 0; i < analyzedfeedbacks.length; i++) {
-          if (value == analyzedfeedbacks[i].id) {
+        for (i = 0; i < feedbacks.length; i++) {
+          if (value == feedbacks[i].id) {
             j = i;
             break;
             break;
           }
         }
-        console.log(j);
-        console.log(value);
-        console.log(feedbacks);
         var obj = feedbacks[j]
         var timesplit = obj.DateTime.slice(0, 16);
         timesplit = timesplit.replace("T", " ");
