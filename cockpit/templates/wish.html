@@ -239,11 +239,9 @@
               <div class="form-group col-md-6">
                 <label for="inputPassword4">Category</label>
                 <select required id="selectCategory" class="form-control">
-                  <option selected>function</option>
+                  <option selected>Function</option>
                   <option>Design</option>
                   <option>Content</option>
-                  <option>Error</option>
-                  <option>Compliment</option>
                   <option>Other</option>
                 </select>
               </div>
@@ -624,6 +622,7 @@
           obj.category;
         para.innerHTML = "<strong>Text: </strong><br />" + obj.description;
         votes.innerHTML = "<strong>Total votes: </strong> <br />" + obj.pvotes;
+        document.getElementByID('openFeedbackFormTitle').innerHTML = "Create Vote"
         var hy = document.getElementById("hy");
         hy.appendChild(h3);
         hy.appendChild(status);
