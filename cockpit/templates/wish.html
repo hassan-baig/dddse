@@ -1110,12 +1110,12 @@ function updatevotes(){
         xhttp.send(fd);
       }
     
-  var countClick = 0;
-  function sortTable(tablename) {
-  var table, rows, switching, i, x, y, shouldSwitch,switchcount=0 ;
-  var dir = "asc"; 
+    function sortTable(tablename) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById(tablename);
   switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
   /*Make a loop that will continue until
   no switching has been done:*/
   while (switching) {
@@ -1131,26 +1131,27 @@ function updatevotes(){
       one from current row and one from the next:*/
       x = rows[i].getElementsByTagName("TD")[0];
       y = rows[i + 1].getElementsByTagName("TD")[0];
-      //check if the two rows should switch place:
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
       var xx = x.innerHTML;
       xx = xx.slice(6);
       var yy = y.innerHTML;
       yy = yy.slice(6);
       xx = parseInt(xx);
       yy = parseInt(yy);
+      
       if (dir == "asc") {
-      if (xx > yy) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-      }else if (dir == "desc") {
-      if (xx < yy) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        break;
-      }
-      }
+        if (xx > yy) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (xx < yy) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
       }
     }
     if (shouldSwitch) {
@@ -1158,8 +1159,9 @@ function updatevotes(){
       and mark that a switch has been done:*/
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
-      switchcount ++;   
-    }else {
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
       /*If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again.*/
       if (switchcount == 0 && dir == "asc") {
@@ -1167,9 +1169,8 @@ function updatevotes(){
         switching = true;
       }
     }
-
   }
-
+}
 
   function checkSelection(){
       var selectedRows = document.getElementsByClassName('selected');
