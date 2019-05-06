@@ -410,6 +410,8 @@
         var value = $(this).find('td:first').html(); // This is JQuery bringing in the ID of the Feedback that was clicked
         value = value.slice(6); // As we know we put extra dddse_ before ID So we use JS Slice method to strip that dddse_ and get the ID 
         value = value - 1; // Again this is Feedback ID we need Array index so -1
+        console.log(value);
+        console.log(feedbacks);
         var obj = feedbacks[value]
         var h3 = document.createElement("h4");
         var h4 = document.createElement("h4");
@@ -1109,20 +1111,10 @@ function updatevotes(){
       yy = yy.slice(6);
       xx = parseInt(xx);
       yy = parseInt(yy);
-      if(countClick == 0){
       if (xx > yy) {
         //if so, mark as a switch and break the loop:
         shouldSwitch = true;
-        countClick = 1;
         break;
-      }
-      }else{
-       if (yy > xx) {
-        //if so, mark as a switch and break the loop:
-        shouldSwitch = true;
-        countClick = 0;
-        break;
-      }
       }
     }
     if (shouldSwitch) {
