@@ -115,7 +115,7 @@
           <br />
           <br />
           <br />
-          <button type="button" class=" mx-auto mt-5 mb-2 btn btn-success" data-toggle="modal"
+          <button onClick="checkSelection();" type="button" class=" mx-auto mt-5 mb-2 btn btn-success" data-toggle="modal"
             data-target="#createVote">
             Create Vote
           </button>
@@ -264,7 +264,7 @@
               </div>
             </div>
             <div class="container">
-              <button style="float: right; " class="btn btn-danger mb-3" data-dismiss="modal">
+              <button style="float: right; " class="btn btn-danger mb-3" data-dismiss="modal" id="Chekr" >
                 Cancel
               </button>
               <button style="float: right; " type="submit" class="btn btn-success mr-1 mb-3"
@@ -1148,7 +1148,20 @@ function updatevotes(){
   }
 }
 
-    
+  function checkSelection(){
+      var selectedRows = document.getElementsByClassName('selected');
+      if (selectedRows.length > 1) { // This will check if the user has selected More than one rows and trying to POST Vote then it shouldn't work
+            alert("Please Choose One at a time");
+        document.getElementById("Chekr").click();
+       return 
+      }
+      else{
+      if (selectedRows.length == 0) { // This will check if the user has selected More than one rows and trying to POST Vote then it shouldn't work
+            alert("Please Choose at least one");
+        document.getElementById("Chekr").click();
+       return 
+      }
+  }
   
   </script>
 </body>
