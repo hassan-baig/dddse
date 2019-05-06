@@ -1024,7 +1024,7 @@ function updatevotes(){
             var description = document.getElementById("description").value;
             var date = document.getElementById("date").value;
             var file1 = document.querySelector('#uploadFile').files[0]; 
-            if (title == null || category == null || description==null || date==null || title == "" || category == "" || description==""){
+            if (title == null || category == null || description==null || date==null || title == "" || category == "" || description=="" || date=="" || title.length == 0 || category.length == 0 || description.length==0){
               alert("Please fill all fields.");
               return
             }
