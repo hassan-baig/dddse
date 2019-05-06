@@ -1112,7 +1112,7 @@ function updatevotes(){
     
   var countClick = 0;
   function sortTable(tablename) {
-  var table, rows, switching, i, x, y, shouldSwitch;
+  var table, rows, switching, i, x, y, shouldSwitch,switchcount=0 ;
   var dir = "asc"; 
   table = document.getElementById(tablename);
   switching = true;
@@ -1158,6 +1158,7 @@ function updatevotes(){
       and mark that a switch has been done:*/
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
+      switchcount ++;   
     }else {
       /*If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again.*/
