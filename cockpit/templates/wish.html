@@ -621,7 +621,7 @@
           "<strong>Category:</strong> " +
           obj.category;
         para.innerHTML = "<strong>Text: </strong><br />" + obj.description;
-        votes.innerHTML = "<strong>Total votes: </strong> <br />" + obj.pvotes;
+        votes.innerHTML = "<strong>Total votes: </strong> <br /> Agreed" + obj.pvotes + "<br />Disagree:" + obj.nvotes;
         document.getElementById("openFeedbackFormTitle").innerHTML = "Create Vote";     
         var hy = document.getElementById("hy");
         hy.appendChild(h3);
@@ -748,6 +748,9 @@
           demo.forEach(function (object) {
             var Votestatus = // This calculates the Votes Percentage P votes means Positive Votes and Nvotes means Negative votes 
               (object.pvotes / (object.pvotes + object.nvotes)) * 100;
+            console.log(object.pvotes);
+            console.log(object.nvotes);
+            console.log((object.pvotes / (object.pvotes + object.nvotes)));
             if(object.pvotes == 0 && object.nvotes == 0){
               Votestatus = 0;
             }
